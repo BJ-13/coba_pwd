@@ -4,7 +4,6 @@ const path = require('path');
 const { parse } = require('querystring');
 const mysql = require('mysql2');
 
-
 const publicDir = path.join(__dirname, 'public');
 const PORT = 3000;
 
@@ -15,18 +14,12 @@ const db = mysql.createConnection({
   database: 'glowup_icecream'
 });
 
-
-
-
 db.connect((err) => {
-
   if (err) {
     console.error("koneksi database gagal");
     process.exit();
   }
-
   console.log("koneksi ke database berhasil!");
-
 })
 
 const server = http.createServer((req, res) => {
@@ -43,9 +36,6 @@ const server = http.createServer((req, res) => {
         return res.end('File not found');
       }
 
-
-
-
       const ext = path.extname(fullPath);
       const contentType = ext === '.css' ? 'text/css' :
 
@@ -55,8 +45,6 @@ const server = http.createServer((req, res) => {
       res.writeHead(200, { 'Content-Type': contentType });
       res.end(content);
     });
-
-
 
 
   } else if (req.method === 'POST' && req.url === '/contact') {
